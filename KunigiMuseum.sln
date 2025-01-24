@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KunigiMuseum.Domain", "KunigiMuseum.Domain\KunigiMuseum.Domain.csproj", "{E19EDEEA-19D9-447C-AB22-A9ACEF5D2927}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KunigiMuseum.Application", "KunigiMuseum.Application\KunigiMuseum.Application.csproj", "{F926A439-EC00-4431-9EAE-1510A039537B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KunigiMuseum.Contracts", "KunigiMuseum.Contracts\KunigiMuseum.Contracts.csproj", "{D08E69BD-D981-48BC-BFE1-87BD2FF0516A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KunigiMuseum.Api", "KunigiMuseum.Api\KunigiMuseum.Api.csproj", "{8C82355F-C7AF-4976-B29D-B0DC166DC222}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E19EDEEA-19D9-447C-AB22-A9ACEF5D2927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E19EDEEA-19D9-447C-AB22-A9ACEF5D2927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E19EDEEA-19D9-447C-AB22-A9ACEF5D2927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E19EDEEA-19D9-447C-AB22-A9ACEF5D2927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F926A439-EC00-4431-9EAE-1510A039537B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F926A439-EC00-4431-9EAE-1510A039537B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F926A439-EC00-4431-9EAE-1510A039537B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F926A439-EC00-4431-9EAE-1510A039537B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08E69BD-D981-48BC-BFE1-87BD2FF0516A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08E69BD-D981-48BC-BFE1-87BD2FF0516A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08E69BD-D981-48BC-BFE1-87BD2FF0516A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08E69BD-D981-48BC-BFE1-87BD2FF0516A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C82355F-C7AF-4976-B29D-B0DC166DC222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C82355F-C7AF-4976-B29D-B0DC166DC222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C82355F-C7AF-4976-B29D-B0DC166DC222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C82355F-C7AF-4976-B29D-B0DC166DC222}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
