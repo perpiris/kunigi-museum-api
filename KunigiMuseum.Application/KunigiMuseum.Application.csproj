@@ -20,4 +20,9 @@
       <Folder Include="Data\Migrations\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Data\Migrations\DataContextModelSnapshot.cs" />
+      <Compile Remove="Data\Migrations\20250124235937_game init.Designer.cs" />
+    </ItemGroup>
+
 </Project>

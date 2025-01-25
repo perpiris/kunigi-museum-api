@@ -14,6 +14,7 @@ public interface ITeamService
     Task<ServiceResponse<TeamResponse>> CreateTeamAsync(CreateTeamRequest request);
     Task<ServiceResponse<TeamResponse>> GetByIdOrSlugAsync(string idOrSlug);
     Task<ServiceResponse<PaginatedResponse<TeamResponse>>> GetPaginatedTeamsAsync(int page, int pageSize);
+    Task<ServiceResponse<TeamResponse>> UpdateTeamAsync(Guid id, UpdateTeamRequest request);
 }
 
 public class TeamService : ITeamService
@@ -90,5 +91,28 @@ public class TeamService : ITeamService
         };
 
         return ServiceResponse<PaginatedResponse<TeamResponse>>.Success(paginatedResponse);
+    }
+
+    public async Task<ServiceResponse<TeamResponse>> UpdateTeamAsync(Guid id, UpdateTeamRequest request)
+    {
+        var team = await _context.Teams.FindAsync(id);
+        if (team == null)
+        {
+            return ServiceResponse<TeamResponse>.Failure("Η ομάδα δεν βρέθηκε.");
+        }
+        
+        team.Description = request.Description;
+        team.IsActive = request.IsActive;
+        team.FoundedYear = request.FoundedYear;
+        team.WebsiteUrl = request.WebsiteUrl;
+        team.FacebookUrl = request.FacebookUrl;
+        team.InstagramUrl = request.InstagramUrl;
+        team.YoutubeUrl = request.YoutubeUrl;
+        
+        _context.Teams.Update(team);
+        await _context.SaveChangesAsync();
+        
+        var response = team.MapToResponse();
+        return ServiceResponse<TeamResponse>.Success(response);
     }
 }

@@ -26,7 +26,7 @@ public class TeamController : ControllerBase
 
         return CreatedAtAction(nameof(GetTeamByIdOrSlug),
             new { idOrSlug = result.Data.TeamId },
-            result);
+            result.Data);
     }
 
     [HttpGet("{idOrSlug}")]
@@ -37,13 +37,25 @@ public class TeamController : ControllerBase
         if (!result.IsSuccess)
             return NotFound(result);
 
-        return Ok(result);
+        return Ok(result.Data);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetPaginatedTeams(int page = 1, int pageSize = 10)
     {
         var result = await _teamService.GetPaginatedTeamsAsync(page, pageSize);
-        return Ok(result);
+        return Ok(result.Data);
+    }
+    
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateTeam(Guid id, UpdateTeamRequest request)
+    {
+        var result = await _teamService.UpdateTeamAsync(id, request);
+        if (!result.IsSuccess || result.Data is null)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result.Data);
     }
 }

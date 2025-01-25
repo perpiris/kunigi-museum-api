@@ -26,7 +26,7 @@ public class GameController : ControllerBase
 
         return CreatedAtAction(nameof(GetGameByIdOrYear),
             new { idOrYear = result.Data.GameId },
-            result);
+            result.Data);
     }
 
     [HttpGet("{idOrYear}")]
@@ -37,13 +37,13 @@ public class GameController : ControllerBase
         if (!result.IsSuccess)
             return NotFound(result);
 
-        return Ok(result);
+        return Ok(result.Data);
     }
     
     [HttpGet]
     public async Task<IActionResult> GetPaginatedGames(int page = 1, int pageSize = 10)
     {
         var result = await _gameService.GetPaginatedGamesAsync(page, pageSize);
-        return Ok(result);
+        return Ok(result.Data);
     }
 }

@@ -14,6 +14,8 @@ public class Team
     [MaxLength(150)] public required string Name { get; set; }
 
     public bool IsActive { get; set; }
+    
+    public short? FoundedYear { get; set; }
 
     public string? Description { get; set; }
 
