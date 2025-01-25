@@ -12,6 +12,7 @@ public static class DependencyInjection
     {
         services.AddScoped<ITeamService, TeamService>();
         services.AddScoped<IGameService, GameService>();
+        services.AddScoped<IUploadService, UploadService>();
         
         services.AddDbContext<DataContext>(opt =>
         {

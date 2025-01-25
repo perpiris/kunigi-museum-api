@@ -20,10 +20,12 @@ public interface ITeamService
 public class TeamService : ITeamService
 {
     private readonly DataContext _context;
+    private readonly IUploadService _uploadService;
 
-    public TeamService(DataContext context)
+    public TeamService(DataContext context, IUploadService uploadService)
     {
         _context = context;
+        _uploadService = uploadService;
     }
 
     public async Task<ServiceResponse<TeamResponse>> CreateTeamAsync(CreateTeamRequest request)
@@ -41,6 +43,8 @@ public class TeamService : ITeamService
             Name = request.Name,
             IsActive = request.IsActive
         };
+        
+        _uploadService.CreateFolder($"teams/{slug}");
 
         _context.Teams.Add(team);
         await _context.SaveChangesAsync();

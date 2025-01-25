@@ -18,10 +18,12 @@ public interface IGameService
 public class GameService : IGameService
 {
     private readonly DataContext _context;
+    private readonly IUploadService _uploadService;
 
-    public GameService(DataContext context)
+    public GameService(DataContext context, IUploadService uploadService)
     {
         _context = context;
+        _uploadService = uploadService;
     }
 
     public async Task<ServiceResponse<GameResponse>> CreateGameAsync(CreateGameRequest request)
@@ -37,6 +39,8 @@ public class GameService : IGameService
 
         _context.Games.Add(game);
         await _context.SaveChangesAsync();
+        
+        _uploadService.CreateFolder($"games/{game.Year.ToString()}");
         
         var response = game.MapToResponse();
         return ServiceResponse<GameResponse>.Success(response);
