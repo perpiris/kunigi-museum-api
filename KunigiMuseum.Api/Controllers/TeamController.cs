@@ -44,6 +44,6 @@ public class TeamController : ControllerBase
     public async Task<IActionResult> GetPaginatedTeams(int page = 1, int pageSize = 10)
     {
         var result = await _teamService.GetPaginatedTeamsAsync(page, pageSize);
-        return result.IsSuccess ? Ok(result) : BadRequest(result);
+        return Ok(result);
     }
 }

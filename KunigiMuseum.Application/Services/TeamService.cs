@@ -1,4 +1,5 @@
 ﻿using KunigiMuseum.Application.Data;
+using KunigiMuseum.Application.Helpers;
 using KunigiMuseum.Application.Mappings;
 using KunigiMuseum.Contracts.Requests.Team;
 using KunigiMuseum.Contracts.Responses.Common;
@@ -26,7 +27,7 @@ public class TeamService : ITeamService
 
     public async Task<ServiceResponse<TeamResponse>> CreateTeamAsync(CreateTeamRequest request)
     {
-        var slug = request.Name;
+        var slug = SlugGenerator.GenerateSlug(request.Name);
         var exists = await _context.Teams.AnyAsync(x => x.Slug == slug);
         if (exists)
         {
@@ -37,7 +38,7 @@ public class TeamService : ITeamService
         {
             Slug = slug,
             Name = request.Name,
-            IsActive = request.IsActive,
+            IsActive = request.IsActive
         };
 
         _context.Teams.Add(team);
@@ -49,8 +50,8 @@ public class TeamService : ITeamService
     
     public async Task<ServiceResponse<TeamResponse>> GetByIdOrSlugAsync(string idOrSlug)
     {
-        Team? team = null;
-        if (int.TryParse(idOrSlug, out var id))
+        Team? team;
+        if (Guid.TryParse(idOrSlug, out var id))
         {
             team = await _context.Teams.FindAsync(id);
         }

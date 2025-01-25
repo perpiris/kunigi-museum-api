@@ -11,6 +11,7 @@ public static class DependencyInjection
     public static IServiceCollection AddApplication(this IServiceCollection services, IConfigurationManager configuration)
     {
         services.AddScoped<ITeamService, TeamService>();
+        services.AddScoped<IGameService, GameService>();
         
         services.AddDbContext<DataContext>(opt =>
         {
